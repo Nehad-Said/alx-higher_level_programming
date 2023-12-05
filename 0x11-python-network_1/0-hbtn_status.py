@@ -1,13 +1,15 @@
 #!/usr/bin/python3
-""" Python script that fetches an url and prints response body """
+
+""" This module fetches using urllib """
+
+
 import urllib.request
 
+with urllib.request.urlopen('https://alx-intranet.hbtn.io/status') as res:
+    body = res.read()
+    content = body.decode('utf-8')
 
-if __name__ == "__main__":
-    with urllib.request.urlopen(
-            "https://alx-intranet.hbtn.io/status") as response:
-        html = response.read()
-        print("Body response:")
-        print(f"\t- type: {type(html)}")
-        print(f"\t- content: {html}")
-        print(f"\t- utf8 content: {html.decode('utf-8')}")
+print('Body response:')
+print('\t- type:', type(body))
+print('\t- content:', body)
+print('\t- utf8 content:', content)

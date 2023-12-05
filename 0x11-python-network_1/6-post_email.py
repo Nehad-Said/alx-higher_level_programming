@@ -1,17 +1,16 @@
 #!/usr/bin/python3
-"""
-Python script that takes in a URL and an email, it sends a POST request to
-the passed URL with the email as a parameter, and displays the body of
-the response.
-"""
+
+""" This module fetches using urllib """
+
+
 import sys
 import requests
 
-
 if __name__ == "__main__":
-    URL = sys.argv[1]
-    EMAIL = sys.argv[2]
-    data = {'email': EMAIL}
-
-    resp = requests.post(URL, data=data, timeout=5).text
-    print(resp)
+    # Get the commands line args
+    url = sys.argv[1]
+    email = sys.argv[2]
+    payload = {'email': email}
+    # Retrieve the response
+    page = requests.post(url, data=payload)
+    print(page.text)
